@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -58,7 +59,7 @@ public class PlayerService {
             playerRepository.save(game.getPlayer());
             return movePlayerDto;
 
-        } else return null;
+        } else return Mapper.modelMapper.map(currentDungeon, MovedPlayerDto.class);
 
     }
 
@@ -110,8 +111,10 @@ public class PlayerService {
                     true);
 
 
+            List<Monster> monsters = currentDungeon.getMonsters().stream().filter(monster -> monster.getAlive() == true).collect(Collectors.toList());
+
             //if there is not any monster dungeon is finished
-            if (monsterRepository.findAllByAliveTrueAndDungeon(currentDungeon) == null) {
+            if (monsters.size() > 0) {
                 System.out.println("-----------ZAVRSENO---------------");
                 currentDungeon.setFinished(true);
             }
