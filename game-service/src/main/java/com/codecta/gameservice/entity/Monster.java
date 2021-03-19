@@ -4,40 +4,40 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Player {
+public class Monster {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+
+    private Double health = 100.0;
+
+
+    private Double damage = 100.0;
+
+
     private String name;
 
-    private String email;
+    @Type(type = "numeric_boolean")
+    @Column(name = "ALIVE", nullable = false)
+    private Boolean alive = true;
 
-
-    private Double health = 1000.0;
-
-    private Double powerBoost = 1.0;
-
-    @ManyToOne()
-    private Weapon weapon;
 
     @ManyToOne
-    private Dungeon currentDungeon;
+    private Dungeon dungeon ;
 
-
-    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
-    private List<Game> games = new ArrayList<>();
-
-    @ManyToOne
-    private Inventory playerInventory;
-
+    @ManyToMany
+    private List<Items> items = new ArrayList<>();
 }

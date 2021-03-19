@@ -8,18 +8,18 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
+@PrimaryKeyJoinColumn(
+        name = "parent_id",
+        foreignKey = @ForeignKey(
+                name = "ID"
+        )
+)
+@Table(name = "HEALING_POTION")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Game {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer gameId;
-
-    private Double score;
-
-    @ManyToOne
-    private Player player;
+public class HealingPotions extends Items{
 
 
+    private Double healthAddition;
 }

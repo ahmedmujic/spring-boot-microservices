@@ -5,13 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class PlayerDto {
+@NoArgsConstructor
+public class PowerUpsDto   extends ItemsDto{
     private Integer id;
+    private Double powerValue;
     private String name;
-    private String email;
-    private Double health;
-    private Double powerBoost;
-
 }

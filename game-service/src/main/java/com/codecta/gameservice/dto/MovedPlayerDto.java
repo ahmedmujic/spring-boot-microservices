@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlayerDto {
-    private Integer id;
-    private String name;
-    private String email;
-    private Double health;
-    private Double powerBoost;
-
+public class MovedPlayerDto {
+    private Integer dungeonId;
+    private List<MonsterDto> monsters;
+    private List<ItemsDto> items;
 }

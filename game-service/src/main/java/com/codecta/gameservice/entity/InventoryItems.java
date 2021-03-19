@@ -1,5 +1,6 @@
 package com.codecta.gameservice.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,15 +12,20 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Game {
+@IdClass(InventoryItemsPk.class)
+public class InventoryItems {
+
+
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer gameId;
-
-    private Double score;
-
     @ManyToOne
-    private Player player;
+    private Inventory inventory;
 
 
+    @Id
+    @ManyToOne
+    private Items items;
+
+    @Column(name = "quantity")
+    private Integer quantity;
 }

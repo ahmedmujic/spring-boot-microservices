@@ -5,13 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class PlayerDto {
+@NoArgsConstructor
+public class WeaponDto {
     private Integer id;
-    private String name;
-    private String email;
-    private Double health;
-    private Double powerBoost;
-
+    private String weaponName;
+    private Double damage;
+    private Integer weaponHealth;
 }

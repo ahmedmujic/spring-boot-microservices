@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlayerDto {
+public class MonsterDto {
     private Integer id;
-    private String name;
-    private String email;
     private Double health;
-    private Double powerBoost;
-
+    private Double damage;
+    private String name;
+    private Boolean alive;
 }
